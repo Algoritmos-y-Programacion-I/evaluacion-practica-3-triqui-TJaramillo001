@@ -5,12 +5,12 @@ import model.Controladora;
 
 public class Executable {
 
-    private Scanner reader;
+    private Scanner in;
     private Controladora cont;
     private static boolean flag;
 
     private Executable() {
-        reader = new Scanner(System.in);
+        in = new Scanner(System.in);
         cont = new Controladora();
     }
 
@@ -24,8 +24,8 @@ public class Executable {
             System.out.println("Opciones:\n" + "1. Imprimir tablero \n" + "2. Jugada de la máquina \n"
                     + "3. Jugada de humano \n" + "4. Verificar ganador \n" + "5. Salir del programa \n");
 
-            int option = reader.nextInt();
-            reader.nextLine();
+            int option = in.nextInt();
+            in.nextLine();
 
             switch (option) {
                 case 1:
@@ -69,10 +69,20 @@ public class Executable {
     }
 
     private void jugadaHumano() {
-        // Implementación de jugada de humano
+        System.out.println("Por favor ingrese la posicion en la que desea ingresar su jugada");
+        System.out.println("Fila:");
+        int fila = in.nextInt()-1;
+        in.nextLine();
+
+        System.out.println("Columna:");
+        int columna = in.nextInt()-1;
+
+        cont.jugadaHumano(fila, columna);
+        imprimirTablero();
+
     }
 
     private void validarGanador() {
-        // Implementación de la validación si alguien ya ganó el triqui
+        cont.validarGanador();
     }
 }

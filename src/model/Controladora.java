@@ -44,6 +44,61 @@ public class Controladora {
         return sb.toString();
     }
 
+
+    public void jugadaHumano(int i, int j){
+        if(!tableroTresEnRaya[i][j].equals("X")){
+            tableroTresEnRaya[i][j]= "O";
+        } else{
+            System.out.println("Disculpe, esa posicion ya esta tomada, por favor intente de nuevo.");
+        }
+    }
+
+    public void validarGanador(){
+        for(int i=0; i<tableroTresEnRaya.length;i++){
+
+            //Gana en fila
+            if(tableroTresEnRaya[i][0].equals("X") &&tableroTresEnRaya[i][1].equals("X") && tableroTresEnRaya[i][2].equals("X")){
+                System.out.println("Gana la maquina ");
+                inicializarTablero(); // Resetear el tablero despues de que alguien gane
+            }
+            if(tableroTresEnRaya[i][0].equals("O") &&tableroTresEnRaya[i][1].equals("O") && tableroTresEnRaya[i][2].equals("O")){
+                System.out.println("Gana el humano");
+                inicializarTablero(); // Resetear el tablero despues de que alguien gane
+            }
+
+            //Gana en columna
+            if(tableroTresEnRaya[0][i].equals("X")&&tableroTresEnRaya[1][i].equals("X")&&tableroTresEnRaya[2][i].equals("X")){
+                System.out.println("Gana la maquina ");
+                inicializarTablero(); // Resetear el tablero despues de que alguien gane
+            }
+            if(tableroTresEnRaya[0][i].equals("O")&&tableroTresEnRaya[1][i].equals("O")&&tableroTresEnRaya[2][i].equals("O")){
+                System.out.println("Gana el humano ");
+                inicializarTablero(); // Resetear el tablero despues de que alguien gane
+            }
+        }
+
+        //Gana en diagonal de izquierda a derecha
+        if(tableroTresEnRaya[0][0].equals("X")&&tableroTresEnRaya[1][1].equals("X")&&tableroTresEnRaya[2][2].equals("X")){
+            System.out.println("Gana la maquina ");
+            inicializarTablero(); // Resetear el tablero despues de que alguien gane
+        }
+        if(tableroTresEnRaya[0][0].equals("O")&&tableroTresEnRaya[1][1].equals("O")&&tableroTresEnRaya[2][2].equals("O")){
+            System.out.println("Gana el humano ");
+            inicializarTablero(); // Resetear el tablero despues de que alguien gane
+        }
+
+        //Gana en diagonal de derecha a izquierda
+        if(tableroTresEnRaya[0][2].equals("X")&&tableroTresEnRaya[1][1].equals("X")&&tableroTresEnRaya[2][0].equals("X")){
+            System.out.println("Gana la maquina ");
+            inicializarTablero(); // Resetear el tablero despues de que alguien gane
+        }
+        if(tableroTresEnRaya[0][2].equals("O")&&tableroTresEnRaya[1][1].equals("O")&&tableroTresEnRaya[2][0].equals("O")){
+            System.out.println("Gana el humano ");
+            inicializarTablero(); // Resetear el tablero despues de que alguien gane
+        }
+        
+    }
+
     /**
      * Realiza una jugada aleatoria para la máquina.
      */
